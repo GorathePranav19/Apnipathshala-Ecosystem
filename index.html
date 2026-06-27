@@ -1269,6 +1269,205 @@
     .skip-link:focus {
       top: 16px;
     }
+
+    /* ============================================================
+       MIND MAP
+    ============================================================ */
+    .mindmap-layout {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 32px;
+      align-items: center;
+      margin-top: 40px;
+    }
+
+    .mindmap-stage {
+      width: 100%;
+    }
+
+    .mindmap-stage svg {
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
+
+    .mm-spoke {
+      stroke: var(--border);
+      stroke-width: 1.5;
+    }
+
+    .mm-link {
+      stroke: #CBD5E1;
+      stroke-width: 1.5;
+      stroke-dasharray: 4 4;
+      opacity: 0;
+      transition: opacity .25s;
+    }
+
+    .mm-link.active {
+      opacity: 1;
+    }
+
+    .mm-node {
+      cursor: pointer;
+    }
+
+    .mm-node circle {
+      transition: r .2s, stroke-width .2s, filter .2s;
+      stroke: #fff;
+      stroke-width: 2;
+    }
+
+    .mm-node text {
+      font-weight: 700;
+      fill: #fff;
+      text-anchor: middle;
+      dominant-baseline: central;
+      pointer-events: none;
+    }
+
+    .mm-label {
+      font-size: 11px;
+      font-weight: 600;
+      fill: var(--text-secondary);
+      text-anchor: middle;
+      pointer-events: none;
+    }
+
+    .mm-node:hover circle,
+    .mm-node:focus circle {
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, .25));
+    }
+
+    .mm-node.dimmed {
+      opacity: .3;
+    }
+
+    .mm-node.selected circle {
+      stroke-width: 4;
+    }
+
+    .mm-hub circle {
+      fill: var(--text-primary);
+    }
+
+    /* Detail panel */
+    .mm-detail {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-md);
+      padding: 28px;
+      min-height: 320px;
+    }
+
+    .mm-detail-empty {
+      color: var(--text-muted);
+      font-size: .98rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      min-height: 280px;
+      text-align: center;
+    }
+
+    .mm-detail-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .mm-detail-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: .9rem;
+      flex-shrink: 0;
+    }
+
+    .mm-detail-name {
+      font-size: 1.2rem;
+      font-weight: 800;
+    }
+
+    .mm-detail-def {
+      color: var(--text-secondary);
+      font-size: .96rem;
+      margin-bottom: 16px;
+    }
+
+    .mm-detail h4 {
+      font-size: .72rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .mm-feature-list {
+      list-style: none;
+      margin-bottom: 18px;
+    }
+
+    .mm-feature-list li {
+      position: relative;
+      padding-left: 20px;
+      font-size: .9rem;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .mm-feature-list li::before {
+      content: "";
+      position: absolute;
+      left: 2px;
+      top: 8px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .mm-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .mm-chip {
+      border: 1px solid var(--border);
+      background: var(--bg-page);
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: .8rem;
+      font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: border-color .15s, color .15s;
+    }
+
+    .mm-chip:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+    }
+
+    @media (max-width: 820px) {
+      .mindmap-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .mm-label {
+        font-size: 13px;
+      }
+    }
   </style>
 </head>
 
@@ -1290,6 +1489,7 @@
       <ul class="nav-links" id="nav-links" role="list">
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#ecosystem">Ecosystem</a></li>
+        <li><a href="#mindmap">Mind Map</a></li>
         <li><a href="#interconnection">Interconnection</a></li>
         <li><a href="#outcomes">Student Outcomes</a></li>
       </ul>
@@ -1512,6 +1712,38 @@
           </article>
 
         </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+
+  <!-- ============================================================
+     MIND MAP SECTION
+============================================================ -->
+  <section id="mindmap" aria-labelledby="mindmap-heading">
+    <div style="padding: 88px 0; background: var(--bg-page);">
+      <div class="container">
+
+        <header class="section-header reveal">
+          <h2 class="section-title" id="mindmap-heading">Ecosystem Mind Map</h2>
+          <p class="section-subtitle">
+            Tap any project to see what it is, where it lives, what it does, and how it connects to the rest.
+          </p>
+        </header>
+
+        <div class="mindmap-layout reveal">
+          <div class="mindmap-stage">
+            <svg id="mm-svg" viewBox="0 0 760 620" role="img"
+              aria-label="Interactive mind map of Apnipathshala projects centred on the student"></svg>
+          </div>
+
+          <div class="mm-detail" id="mm-detail" aria-live="polite">
+            <div class="mm-detail-empty">Select a project node to explore its details.</div>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -2046,6 +2278,138 @@
     }, { threshold: 0.1 });
 
     revealEls.forEach(el => observer.observe(el));
+
+    /* -------- Ecosystem mind map -------- */
+    (function mindMap() {
+      const C = { blue: '#1B6FE0', green: '#16A34A', orange: '#F7941D' };
+      // links are undirected; listed once per neighbour on each side.
+      const NODES = [
+        { id: 'ap', name: 'Apnipathshala', abbr: 'AP', color: C.blue, status: 'Live', url: 'https://www.apnipathshala.org/',
+          def: 'Social-impact startup that helps community leaders build digital literacy classrooms.',
+          features: ['Resources & guidance for CLC setup', 'Digital literacy classrooms', 'Community-led education'], links: ['tte'] },
+        { id: 'tte', name: 'Teach To Earn', abbr: 'TE', color: C.green, status: 'Live', url: 'https://www.teachtoearn.in/',
+          def: 'Franchisee model of digital literacy classrooms for a sustainable, scalable CLC network.',
+          features: ['Franchise-based classrooms', 'Sustainable earning for educators', 'Scalable CLC network'], links: ['ap'] },
+        { id: 'pc', name: 'Apna PC', abbr: 'PC', color: C.orange, status: 'Live', url: 'https://www.apnapc.com/',
+          def: 'Distraction-free, education-focused computer with built-in study tools and safety features.',
+          features: ['Distraction-free study environment', 'Built-in learning tools', 'Safety & content controls'], links: ['os'] },
+        { id: 'prerna', name: 'Apniprerna', abbr: 'PR', color: C.orange, status: 'Live', url: 'https://www.apniprerna.com/',
+          def: 'CLC software for high visibility of student activity, computer health, and parent insights.',
+          features: ['Student activity monitoring', 'Computer health tracking', 'Insights for parents & community'], links: ['pms', 'os', 'eklavya'] },
+        { id: 'os', name: 'Shiksha OS', abbr: 'OS', color: C.blue, status: 'Coming Soon', url: '',
+          def: "India's first education OS, making students self-learners in a safe, structured environment.",
+          features: ['OS-level safe learning', 'Centralised student login', 'Self-directed learning shell'], links: ['prerna', 'pc'] },
+        { id: 'eklavya', name: 'Eklavya', abbr: 'EK', color: C.green, status: 'Live', url: 'https://www.eklavya.io/',
+          def: 'Free AI tutor for JEE, NEET, CBSE, and Maharashtra Board with retrieval-first practice.',
+          features: ['Clear explanations & worked examples', 'Retrieval-first practice', 'Spaced-repetition revision'], links: ['prerna', 'lms'] },
+        { id: 'lms', name: 'LMS / DRONA', abbr: 'LMS', color: C.orange, status: 'Coming Soon', url: '',
+          def: 'Hyper-niche curriculum LMS with AI-personalised assessment and self-improvement loops.',
+          features: ['Customised curriculum', 'AI-personalised assessment', 'Continuous improvement loops'], links: ['pms', 'eklavya'] },
+        { id: 'pms', name: 'PMS / VED', abbr: 'PMS', color: C.blue, status: 'Live', url: 'https://pms.apnipathshala.org/',
+          def: 'Centralised CLC hub for students, fees, computers, and data. VED = Virtual Ecosystem for Decentralisation.',
+          features: ['Manage students, fees & computers', 'Centralised CLC data', 'Connects centres to one community'], links: ['prerna', 'lms'] },
+      ];
+
+      const svg = document.getElementById('mm-svg');
+      if (!svg) return;
+      const NS = 'http://www.w3.org/2000/svg';
+      const byId = Object.fromEntries(NODES.map(n => [n.id, n]));
+      const cx = 380, cy = 310, R = 240;
+
+      // position nodes on a circle
+      NODES.forEach((n, i) => {
+        const a = (-90 + i * 360 / NODES.length) * Math.PI / 180;
+        n.x = cx + R * Math.cos(a);
+        n.y = cy + R * Math.sin(a);
+      });
+
+      const el = (tag, attrs) => {
+        const e = document.createElementNS(NS, tag);
+        for (const k in attrs) e.setAttribute(k, attrs[k]);
+        return e;
+      };
+
+      // spokes from hub to each node
+      NODES.forEach(n => svg.appendChild(el('line', { class: 'mm-spoke', x1: cx, y1: cy, x2: n.x, y2: n.y })));
+
+      // inter-project links (dedup undirected pairs), hidden until selection
+      const seen = new Set(), linkEls = {};
+      NODES.forEach(n => n.links.forEach(t => {
+        const key = [n.id, t].sort().join('-');
+        if (seen.has(key)) return;
+        seen.add(key);
+        const m = byId[t];
+        const line = el('line', { class: 'mm-link', x1: n.x, y1: n.y, x2: m.x, y2: m.y, 'data-pair': key });
+        svg.appendChild(line);
+        (linkEls[n.id] = linkEls[n.id] || []).push(line);
+        (linkEls[t] = linkEls[t] || []).push(line);
+      }));
+
+      // hub
+      const hub = el('g', { class: 'mm-node mm-hub' });
+      hub.appendChild(el('circle', { cx, cy, r: 46 }));
+      const hubText = el('text', { x: cx, y: cy });
+      hubText.textContent = 'Student';
+      hub.appendChild(hubText);
+      svg.appendChild(hub);
+
+      // product nodes
+      const nodeEls = {};
+      NODES.forEach(n => {
+        const g = el('g', { class: 'mm-node', tabindex: '0', role: 'button', 'aria-label': n.name });
+        g.appendChild(el('circle', { cx: n.x, cy: n.y, r: 34, fill: n.color }));
+        const t = el('text', { x: n.x, y: n.y, 'font-size': '13' });
+        t.textContent = n.abbr;
+        g.appendChild(t);
+        const lblY = n.y + (n.y < cy ? -48 : 50);
+        const lbl = el('text', { class: 'mm-label', x: n.x, y: lblY });
+        lbl.textContent = n.name;
+        g.appendChild(lbl);
+        g.addEventListener('click', () => select(n.id));
+        g.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); select(n.id); } });
+        svg.appendChild(g);
+        nodeEls[n.id] = g;
+      });
+
+      const detail = document.getElementById('mm-detail');
+
+      function select(id) {
+        const n = byId[id];
+        const neighbours = new Set([id, ...n.links]);
+
+        Object.entries(nodeEls).forEach(([nid, g]) => {
+          g.classList.toggle('selected', nid === id);
+          g.classList.toggle('dimmed', !neighbours.has(nid));
+        });
+        svg.querySelectorAll('.mm-link').forEach(l => l.classList.remove('active'));
+        (linkEls[id] || []).forEach(l => l.classList.add('active'));
+
+        const urlBtn = n.url
+          ? `<a href="${n.url}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Visit Website</a>`
+          : `<span class="badge badge-soon" style="padding:6px 14px;">Coming Soon</span>`;
+        const chips = n.links.map(t =>
+          `<button class="mm-chip" type="button" data-go="${t}">${byId[t].name}</button>`).join('');
+
+        detail.innerHTML = `
+          <div class="mm-detail-top">
+            <div class="mm-detail-icon" style="background:${n.color}">${n.abbr}</div>
+            <div>
+              <div class="mm-detail-name">${n.name}</div>
+              <span class="badge ${n.status === 'Live' ? 'badge-live' : 'badge-soon'}"><span class="badge-dot"></span>${n.status}</span>
+            </div>
+          </div>
+          <p class="mm-detail-def">${n.def}</p>
+          <h4>Key Features</h4>
+          <ul class="mm-feature-list">${n.features.map(f => `<li>${f}</li>`).join('')}</ul>
+          <h4>Connects To</h4>
+          <div class="mm-chips">${chips || '<span style="color:var(--text-muted);font-size:.85rem;">Standalone</span>'}</div>
+          ${urlBtn}`;
+        detail.querySelectorAll('[data-go]').forEach(b =>
+          b.addEventListener('click', () => select(b.dataset.go)));
+      }
+
+      select('pms');
+    })();
 
     /* -------- Open first accordion by default -------- */
     (function openDefault() {
