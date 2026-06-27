@@ -1,0 +1,15 @@
+/* =================================================================
+   _headers — Netlify / Cloudflare Pages HTTP Security Headers
+   If hosting on Apache, rename this to ".htaccess" and adapt.
+   If hosting on Nginx, add these inside your server {} block.
+================================================================= */
+
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'self' 'unsafe-inline'; frame-ancestors 'none';
+  Cache-Control: public, max-age=86400, must-revalidate
+*/

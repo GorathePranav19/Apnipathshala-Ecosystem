@@ -1,0 +1,82 @@
+# Apnipathshala Tech Ecosystem
+
+> A connected suite of software products designed to support digital literacy,
+> self-directed learning, student growth, and community-based education in India.
+
+Apnipathshala is a social-impact startup that builds technology for Community Learning Centres (CLCs).
+The ecosystem places the **student at the centre** and connects every platform to serve one mission:
+*empower every student to learn, grow, and lead.*
+
+---
+
+## What is this site?
+
+This page explains the **Apnipathshala Tech Ecosystem** — how each software product works,
+how they connect with each other, and what outcomes they create for students, pod leaders,
+and community educators.
+
+**Audience:** Students, community leaders, pod leaders, education partners, internal team members,
+and anyone exploring the ecosystem for the first time.
+
+---
+
+## Core Products
+
+- [Apnipathshala](https://www.apnipathshala.org/) — Social-impact startup platform for building digital literacy classrooms. Live.
+- [Teach To Earn](https://www.teachtoearn.in/) — Franchisee model for digital literacy classrooms; supports a sustainable CLC network. Live.
+- [Apna PC](https://www.apnapc.com/) — Distraction-free, education-focused computer built with study tools and safety features. Live.
+- [Apniprerna](https://www.apniprerna.com/) — CLC management software for monitoring student activity, computer health, and parent insights. Live.
+- [Eklavya](https://www.eklavya.io/) — Free AI tutor for JEE, NEET, CBSE, and Maharashtra Board. Live.
+- [PMS / VED](https://pms.apnipathshala.org/) — Program Management System; centralised CLC hub for students, fees, computers, and data. Live.
+- **Shiksha OS** — India's first education-focused operating system for safe self-directed learning. Coming Soon.
+- **LMS / DHRONA** — Hyper-niche curriculum LMS with AI-personalized assessment and self-improvement loops. Coming Soon.
+
+---
+
+## How the Ecosystem Connects
+
+All products share data through a **Unified Data Layer** with centralised authentication (single sign-on).
+Key integration points:
+
+- **PMS ↔ Apniprerna** — Lifecycle data, student sync, weekly report submission, auto complaint creation.
+- **Shiksha OS → Apniprerna** — Attendance (login data), learning & usage data, device activity.
+- **Apna Dashboard ↔ PMS / Apniprerna** — KPIs, graphs, inventory/CMD, finance management.
+- **LMS ↔ PMS / Apniprerna** — Assessment submissions used for weekly reports; curriculum access for CLC/POD leaders.
+
+Cross-cutting capabilities across all platforms:
+- Centralised Authentication (SSO)
+- Unified Data Layer (real-time sync)
+- Smart Notifications (parents, POD leaders, admins)
+- AI & Insights (predictions, recommendations)
+- Reports (real-time and custom)
+
+---
+
+## Student Outcomes
+
+1. Personalised Learning Journey
+2. Safe & Distraction-Free Environment
+3. Track Progress & Improve Continuously
+4. Guidance, Support & Community
+5. Build Skills & Real Knowledge
+6. Better Opportunities for a Brighter Future
+
+---
+
+## Key Links
+
+- Main website: https://www.apnipathshala.org/
+- Apniprerna: https://www.apniprerna.com/
+- Teach To Earn: https://www.teachtoearn.in/
+- Apna PC: https://www.apnapc.com/
+- Eklavya AI: https://www.eklavya.io/
+- PMS: https://pms.apnipathshala.org/
+
+---
+
+## About
+
+**Organisation:** Apnipathshala  
+**Type:** Social-impact education technology startup, India  
+**Mission:** Empower every student in underserved communities to learn, grow, and lead through technology.  
+**Tone:** Professional, clear, inspiring, community-first.

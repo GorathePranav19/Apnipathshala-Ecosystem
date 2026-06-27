@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!--
+    Sitemap for Apnipathshala Tech Ecosystem
+    Update "https://yourdomain.com" with your actual deployed URL before going live.
+  -->
+
+  <!-- Home / Hero -->
+  <url>
+    <loc>https://yourdomain.com/</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Core Ecosystem section (anchor) -->
+  <url>
+    <loc>https://yourdomain.com/#ecosystem</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Software Interconnection section (anchor) -->
+  <url>
+    <loc>https://yourdomain.com/#interconnection</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Student Outcomes section (anchor) -->
+  <url>
+    <loc>https://yourdomain.com/#outcomes</loc>
+    <lastmod>2026-06-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>

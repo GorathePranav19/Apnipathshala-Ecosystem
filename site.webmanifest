@@ -1,0 +1,23 @@
+{
+  "name": "Apnipathshala Tech Ecosystem",
+  "short_name": "AP Ecosystem",
+  "description": "A connected suite of software products built to support digital literacy, self-directed learning, and student growth in community-based education.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F9FAFB",
+  "theme_color": "#1B6FE0",
+  "orientation": "any",
+  "lang": "en",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "AP-logo-primary.webp",
+      "sizes": "any",
+      "type": "image/webp",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "social"],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

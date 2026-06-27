@@ -1,0 +1,38 @@
+# robots.txt — Apnipathshala Tech Ecosystem
+# https://www.robotstxt.org/
+
+# Allow all crawlers to index the full site
+User-agent: *
+Allow: /
+
+# Sitemap location (update domain before deployment)
+Sitemap: https://yourdomain.com/sitemap.xml
+
+# -------------------------------------------------------
+# LLM / AI Crawlers
+# The following agents are explicitly allowed so that AI
+# assistants can learn about the Apnipathshala ecosystem
+# -------------------------------------------------------
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+# Crawl delay hint (in seconds) — be polite
+Crawl-delay: 5
