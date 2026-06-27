@@ -776,47 +776,6 @@
       background: var(--bg-page);
     }
 
-    .ic-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
-    }
-
-    /* Accordion cards */
-    .ic-card {
-      background: var(--bg-white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-sm);
-      overflow: hidden;
-      transition: box-shadow .2s;
-    }
-
-    .ic-card:hover {
-      box-shadow: var(--shadow-md);
-    }
-
-    .ic-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px 24px;
-      cursor: pointer;
-      user-select: none;
-      gap: 16px;
-    }
-
-    .ic-card-header:focus-visible {
-      outline: 2px solid var(--blue);
-      outline-offset: -2px;
-    }
-
-    .ic-header-left {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
     .ic-icon {
       width: 40px;
       height: 40px;
@@ -862,47 +821,6 @@
       margin-top: 2px;
     }
 
-    .ic-chevron {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-      background: var(--bg-page);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      transition: transform .25s, background .2s;
-    }
-
-    .ic-card.open .ic-chevron {
-      transform: rotate(180deg);
-      background: var(--blue-light);
-    }
-
-    .ic-chevron svg {
-      width: 14px;
-      height: 14px;
-      stroke: var(--text-muted);
-      fill: none;
-      stroke-width: 2.5;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .ic-card.open .ic-chevron svg {
-      stroke: var(--blue);
-    }
-
-    .ic-body {
-      display: none;
-      padding: 0 24px 22px;
-      border-top: 1px solid var(--border);
-    }
-
-    .ic-card.open .ic-body {
-      display: block;
-    }
-
     .ic-point-list {
       list-style: none;
       display: flex;
@@ -929,28 +847,99 @@
       margin-top: 7px;
     }
 
-    /* Flow diagram between cards */
-    .ic-flow-label {
-      text-align: center;
-      font-size: .75rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      letter-spacing: .05em;
-      text-transform: uppercase;
+    /* Tabbed interconnection */
+    .ic-tabs {
       display: flex;
-      align-items: center;
-      gap: 8px;
-      justify-content: center;
-      padding: 2px 0;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 24px;
     }
 
-    .ic-flow-label::before,
-    .ic-flow-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-      max-width: 120px;
+    .ic-tab {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 10px 16px;
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--text-secondary);
+      transition: border-color .2s, box-shadow .2s, background .2s;
+    }
+
+    .ic-tab:hover {
+      border-color: var(--blue-mid);
+    }
+
+    .ic-tab[aria-selected="true"] {
+      border-color: var(--blue);
+      box-shadow: inset 0 0 0 1px var(--blue);
+      background: var(--blue-light);
+      color: var(--text-primary);
+    }
+
+    .ic-tab:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+    }
+
+    .ic-tab .ic-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      font-size: .66rem;
+    }
+
+    .ic-tab-label {
+      text-align: left;
+      line-height: 1.25;
+    }
+
+    .ic-tab-name {
+      font-size: .92rem;
+      font-weight: 700;
+    }
+
+    .ic-tab-sub {
+      font-size: .72rem;
+      color: var(--text-muted);
+    }
+
+    .ic-panel {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      padding: 28px;
+    }
+
+    .ic-panel[hidden] {
+      display: none;
+    }
+
+    .ic-panel-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    @media (max-width: 600px) {
+      .ic-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 6px;
+      }
+
+      .ic-tab {
+        flex-shrink: 0;
+        scroll-snap-align: start;
+      }
     }
 
     /* ============================================================
@@ -1786,188 +1775,130 @@
             </div>
           </div>
 
-          <!-- Flow legend -->
-          <div class="flow-legend" aria-label="Data flow legend">
-            <div class="legend-item">
-              <div class="legend-line solid"></div> Data Flow (Unidirectional)
-            </div>
-            <div class="legend-item">
-              <div class="legend-line dashed"></div> Data Flow (Conditional)
-            </div>
-            <div class="legend-item">
-              <div class="legend-line twoway"></div> Two-way Data Flow
-            </div>
-            <div class="legend-item">
-              <div class="legend-line sync"></div> Status / Sync Flow
-            </div>
+        <div class="reveal">
+          <div class="ic-tabs" role="tablist" aria-label="Software platforms">
+            <button class="ic-tab" role="tab" id="tab-pms" aria-controls="panel-pms" aria-selected="true">
+              <span class="ic-icon purple">PMS</span>
+              <span class="ic-tab-label"><span class="ic-tab-name">PMS / VED</span></span>
+            </button>
+            <button class="ic-tab" role="tab" id="tab-apniprerna" aria-controls="panel-apniprerna" aria-selected="false" tabindex="-1">
+              <span class="ic-icon blue">AP</span>
+              <span class="ic-tab-label"><span class="ic-tab-name">Apniprerna</span></span>
+            </button>
+            <button class="ic-tab" role="tab" id="tab-shiksha" aria-controls="panel-shiksha" aria-selected="false" tabindex="-1">
+              <span class="ic-icon green">OS</span>
+              <span class="ic-tab-label"><span class="ic-tab-name">Shiksha OS</span></span>
+            </button>
+            <button class="ic-tab" role="tab" id="tab-dashboard" aria-controls="panel-dashboard" aria-selected="false" tabindex="-1">
+              <span class="ic-icon orange">AD</span>
+              <span class="ic-tab-label"><span class="ic-tab-name">Apna Dashboard</span></span>
+            </button>
+            <button class="ic-tab" role="tab" id="tab-lms" aria-controls="panel-lms" aria-selected="false" tabindex="-1">
+              <span class="ic-icon teal">LMS</span>
+              <span class="ic-tab-label"><span class="ic-tab-name">LMS / DRONA</span></span>
+            </button>
           </div>
-        </div>
-
-        <div class="ic-grid">
 
           <!-- PMS -->
-          <div class="ic-card reveal" id="ic-pms">
-            <div class="ic-card-header" role="button" tabindex="0" aria-expanded="false" aria-controls="ic-pms-body"
-              onclick="toggleAccordion(this)" onkeydown="handleAccordionKey(event, this)">
-              <div class="ic-header-left">
-                <div class="ic-icon purple">PMS</div>
-                <div>
-                  <div class="ic-card-title">PMS / VED</div>
-                  <div class="ic-card-subtitle">Centre Management Hub</div>
-                </div>
-              </div>
-              <div class="ic-chevron" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
+          <div class="ic-panel" role="tabpanel" id="panel-pms" aria-labelledby="tab-pms" tabindex="0">
+            <div class="ic-panel-header">
+              <div class="ic-icon purple">PMS</div>
+              <div>
+                <div class="ic-card-title">PMS / VED</div>
+                <div class="ic-card-subtitle">Centre Management Hub</div>
               </div>
             </div>
-            <div class="ic-body" id="ic-pms-body" role="region">
-              <ul class="ic-point-list">
-                <li>NPA applications with a "shipped" status are added to the shipment module of Apna Dashboard and
-                  their progress is tracked alongside the application status.</li>
-                <li>Pod management lifecycle data — including hours students used computers, hours of active learning,
-                  topics covered, offline and online activity, student attendance, and hours computers were powered on —
-                  is fetched from Apniprerna and shown beside the submitted weekly report for admin review.</li>
-                <li>Computers that have not been powered on for more than 3 days are automatically surfaced in the PMS
-                  complaint module, with data pulled from Apniprerna.</li>
-                <li>A callback request is created automatically for any such complaint to prompt follow-up and capture
-                  the reason.</li>
-                <li>POD leaders can create students in Apniprerna directly from the students stored in PMS.</li>
-                <li>Courses are accessible from the curriculum library of LMS.</li>
-                <li>Students added in PMS can be selected when submitting weekly reports, making it easy to track which
-                  student has been learning and for how long.</li>
-              </ul>
-            </div>
+            <ul class="ic-point-list">
+              <li>NPA applications with a "shipped" status are added to the shipment module of Apna Dashboard and
+                their progress is tracked alongside the application status.</li>
+              <li>Pod management lifecycle data — including hours students used computers, hours of active learning,
+                topics covered, offline and online activity, student attendance, and hours computers were powered on —
+                is fetched from Apniprerna and shown beside the submitted weekly report for admin review.</li>
+              <li>Computers that have not been powered on for more than 3 days are automatically surfaced in the PMS
+                complaint module, with data pulled from Apniprerna.</li>
+              <li>A callback request is created automatically for any such complaint to prompt follow-up and capture
+                the reason.</li>
+              <li>POD leaders can create students in Apniprerna directly from the students stored in PMS.</li>
+              <li>Courses are accessible from the curriculum library of LMS.</li>
+              <li>Students added in PMS can be selected when submitting weekly reports, making it easy to track which
+                student has been learning and for how long.</li>
+            </ul>
           </div>
-
-          <div class="ic-flow-label" aria-hidden="true">Connected to</div>
 
           <!-- Apniprerna -->
-          <div class="ic-card reveal ic-open-default" id="ic-apniprerna">
-            <div class="ic-card-header" role="button" tabindex="0" aria-expanded="false"
-              aria-controls="ic-apniprerna-body" onclick="toggleAccordion(this)"
-              onkeydown="handleAccordionKey(event, this)">
-              <div class="ic-header-left">
-                <div class="ic-icon blue">AP</div>
-                <div>
-                  <div class="ic-card-title">Apniprerna</div>
-                  <div class="ic-card-subtitle">Activity and Device Monitoring</div>
-                </div>
-              </div>
-              <div class="ic-chevron" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
+          <div class="ic-panel" role="tabpanel" id="panel-apniprerna" aria-labelledby="tab-apniprerna" tabindex="0" hidden>
+            <div class="ic-panel-header">
+              <div class="ic-icon blue">AP</div>
+              <div>
+                <div class="ic-card-title">Apniprerna</div>
+                <div class="ic-card-subtitle">Activity and Device Monitoring</div>
               </div>
             </div>
-            <div class="ic-body" id="ic-apniprerna-body" role="region">
-              <ul class="ic-point-list">
-                <li>Full PC control and OS-level access is made possible through Shiksha OS.</li>
-                <li>Complete device health data is available through Shiksha OS.</li>
-                <li>Student activity is fetched and categorised, then displayed in the weekly report activity section.
-                </li>
-                <li>ALIS and student website access can be launched directly from the individual student page within
-                  PMS.</li>
-                <li>POD leaders can submit weekly reports directly from the Apniprerna dashboard and select which
-                  students were active.</li>
-                <li>Offline tracking data is used across reports, student activity summaries, and the student website.
-                </li>
-                <li>When a student logs out of Shiksha OS, parents are automatically notified.</li>
-              </ul>
-            </div>
+            <ul class="ic-point-list">
+              <li>Full PC control and OS-level access is made possible through Shiksha OS.</li>
+              <li>Complete device health data is available through Shiksha OS.</li>
+              <li>Student activity is fetched and categorised, then displayed in the weekly report activity section.</li>
+              <li>ALIS and student website access can be launched directly from the individual student page within
+                PMS.</li>
+              <li>POD leaders can submit weekly reports directly from the Apniprerna dashboard and select which
+                students were active.</li>
+              <li>Offline tracking data is used across reports, student activity summaries, and the student website.</li>
+              <li>When a student logs out of Shiksha OS, parents are automatically notified.</li>
+            </ul>
           </div>
-
-          <div class="ic-flow-label" aria-hidden="true">Connected to</div>
 
           <!-- Shiksha OS -->
-          <div class="ic-card reveal" id="ic-shiksha">
-            <div class="ic-card-header" role="button" tabindex="0" aria-expanded="false" aria-controls="ic-shiksha-body"
-              onclick="toggleAccordion(this)" onkeydown="handleAccordionKey(event, this)">
-              <div class="ic-header-left">
-                <div class="ic-icon green">OS</div>
-                <div>
-                  <div class="ic-card-title">Shiksha OS</div>
-                  <div class="ic-card-subtitle">Education Operating System (Coming Soon)</div>
-                </div>
-              </div>
-              <div class="ic-chevron" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
+          <div class="ic-panel" role="tabpanel" id="panel-shiksha" aria-labelledby="tab-shiksha" tabindex="0" hidden>
+            <div class="ic-panel-header">
+              <div class="ic-icon green">OS</div>
+              <div>
+                <div class="ic-card-title">Shiksha OS</div>
+                <div class="ic-card-subtitle">Education Operating System (Coming Soon)</div>
               </div>
             </div>
-            <div class="ic-body" id="ic-shiksha-body" role="region">
-              <ul class="ic-point-list">
-                <li>Centralised login marks student attendance in PMS automatically when a student logs into Apna PC.
-                </li>
-                <li>Personalized Clicky assists students in learning anything from the LMS curriculum.</li>
-                <li>Eklavya uses Apniprerna's data summary — including usage patterns, topics students have covered, and
-                  what they already know — to personalize the learning experience for each student.</li>
-              </ul>
-            </div>
+            <ul class="ic-point-list">
+              <li>Centralised login marks student attendance in PMS automatically when a student logs into Apna PC.</li>
+              <li>Personalized Clicky assists students in learning anything from the LMS curriculum.</li>
+              <li>Eklavya uses Apniprerna's data summary — including usage patterns, topics students have covered, and
+                what they already know — to personalize the learning experience for each student.</li>
+            </ul>
           </div>
-
-          <div class="ic-flow-label" aria-hidden="true">Connected to</div>
 
           <!-- Apna Dashboard -->
-          <div class="ic-card reveal" id="ic-dashboard">
-            <div class="ic-card-header" role="button" tabindex="0" aria-expanded="false"
-              aria-controls="ic-dashboard-body" onclick="toggleAccordion(this)"
-              onkeydown="handleAccordionKey(event, this)">
-              <div class="ic-header-left">
-                <div class="ic-icon orange">AD</div>
-                <div>
-                  <div class="ic-card-title">Apna Dashboard</div>
-                  <div class="ic-card-subtitle">Visibility, Analytics, and Finance</div>
-                </div>
-              </div>
-              <div class="ic-chevron" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
+          <div class="ic-panel" role="tabpanel" id="panel-dashboard" aria-labelledby="tab-dashboard" tabindex="0" hidden>
+            <div class="ic-panel-header">
+              <div class="ic-icon orange">AD</div>
+              <div>
+                <div class="ic-card-title">Apna Dashboard</div>
+                <div class="ic-card-subtitle">Visibility, Analytics, and Finance</div>
               </div>
             </div>
-            <div class="ic-body" id="ic-dashboard-body" role="region">
-              <ul class="ic-point-list">
-                <li><strong>KPIs:</strong> POD and computer performance data is fetched directly from PMS.</li>
-                <li><strong>Analysis and Graphs:</strong> AI assists in building graphs and collecting data from across
-                  the Apnipathshala ecosystem.</li>
-                <li><strong>Inventory / CMD:</strong> Devices added by the computer team in inventory can be selected in
-                  the complaints module when raising a complaint. Device status — including whether devices are active
-                  or inactive and how long since they were last active — can be viewed from Apniprerna.</li>
-                <li><strong>Invoice / Finance:</strong> Finance management for Apnipathshala is handled within this
-                  module.</li>
-              </ul>
-            </div>
+            <ul class="ic-point-list">
+              <li><strong>KPIs:</strong> POD and computer performance data is fetched directly from PMS.</li>
+              <li><strong>Analysis and Graphs:</strong> AI assists in building graphs and collecting data from across
+                the Apnipathshala ecosystem.</li>
+              <li><strong>Inventory / CMD:</strong> Devices added by the computer team in inventory can be selected in
+                the complaints module when raising a complaint. Device status — including whether devices are active
+                or inactive and how long since they were last active — can be viewed from Apniprerna.</li>
+              <li><strong>Invoice / Finance:</strong> Finance management for Apnipathshala is handled within this
+                module.</li>
+            </ul>
           </div>
 
-          <div class="ic-flow-label" aria-hidden="true">Connected to</div>
-
           <!-- LMS -->
-          <div class="ic-card reveal" id="ic-lms">
-            <div class="ic-card-header" role="button" tabindex="0" aria-expanded="false" aria-controls="ic-lms-body"
-              onclick="toggleAccordion(this)" onkeydown="handleAccordionKey(event, this)">
-              <div class="ic-header-left">
-                <div class="ic-icon teal">LMS</div>
-                <div>
-                  <div class="ic-card-title">LMS / DRONA</div>
-                  <div class="ic-card-subtitle">Curriculum and Assessments (Coming Soon)</div>
-                </div>
-              </div>
-              <div class="ic-chevron" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <polyline points="6 9 12 15 18 9" />
-                </svg>
+          <div class="ic-panel" role="tabpanel" id="panel-lms" aria-labelledby="tab-lms" tabindex="0" hidden>
+            <div class="ic-panel-header">
+              <div class="ic-icon teal">LMS</div>
+              <div>
+                <div class="ic-card-title">LMS / DRONA</div>
+                <div class="ic-card-subtitle">Curriculum and Assessments (Coming Soon)</div>
               </div>
             </div>
-            <div class="ic-body" id="ic-lms-body" role="region">
-              <ul class="ic-point-list">
-                <li>Courses analyse submitted assessments and surface suggestions for improvement within the current
-                  course.</li>
-                <li>Assessments completed on the LMS can be submitted as weekly reports in PMS and Apniprerna.</li>
-              </ul>
-            </div>
+            <ul class="ic-point-list">
+              <li>Courses analyse submitted assessments and surface suggestions for improvement within the current
+                course.</li>
+              <li>Assessments completed on the LMS can be submitted as weekly reports in PMS and Apniprerna.</li>
+            </ul>
           </div>
 
         </div>
@@ -2250,20 +2181,34 @@
       });
     });
 
-    /* -------- Accordion toggle -------- */
-    function toggleAccordion(headerEl) {
-      const card = headerEl.closest('.ic-card');
-      const body = card.querySelector('.ic-body');
-      const isOpen = card.classList.toggle('open');
-      headerEl.setAttribute('aria-expanded', String(isOpen));
-    }
+    /* -------- Interconnection tabs -------- */
+    (function icTabs() {
+      const tabs = Array.from(document.querySelectorAll('.ic-tab'));
+      if (!tabs.length) return;
 
-    function handleAccordionKey(event, headerEl) {
-      if (event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        toggleAccordion(headerEl);
+      function activate(tab, focus = true) {
+        tabs.forEach(t => {
+          const selected = t === tab;
+          t.setAttribute('aria-selected', String(selected));
+          t.tabIndex = selected ? 0 : -1;
+          document.getElementById(t.getAttribute('aria-controls')).hidden = !selected;
+        });
+        if (focus) tab.focus();
       }
-    }
+
+      tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => activate(tab, false));
+        tab.addEventListener('keydown', e => {
+          const keys = { ArrowRight: 1, ArrowLeft: -1, Home: 'h', End: 'e' };
+          if (!(e.key in keys)) return;
+          e.preventDefault();
+          const next = e.key === 'Home' ? 0
+            : e.key === 'End' ? tabs.length - 1
+              : (i + keys[e.key] + tabs.length) % tabs.length;
+          activate(tabs[next]);
+        });
+      });
+    })();
 
     /* -------- Reveal on scroll -------- */
     const revealEls = document.querySelectorAll('.reveal');
@@ -2409,16 +2354,6 @@
       }
 
       select('pms');
-    })();
-
-    /* -------- Open first accordion by default -------- */
-    (function openDefault() {
-      const firstCard = document.querySelector('.ic-card');
-      if (firstCard) {
-        firstCard.classList.add('open');
-        const header = firstCard.querySelector('.ic-card-header');
-        if (header) header.setAttribute('aria-expanded', 'true');
-      }
     })();
 
   </script>
